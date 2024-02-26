@@ -21,7 +21,7 @@ environment {
                     dir("${WORKSPACE}/Node_Basic") {
                         // Using the checkout step for a more Jenkins-native approach
                         checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']],
-                            userRemoteConfigs: [[url: 'https://github.com/yourusername/yourrepository.git']]]
+                            userRemoteConfigs: [[url: 'https://github.com/AttaAli-Liqteq/Jenkins_First.git']]]
                     }
                 }
             }
