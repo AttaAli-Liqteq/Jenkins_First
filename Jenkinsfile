@@ -31,7 +31,7 @@ environment {
         stage('Build and Run Docker Containers') {
             steps {
                 // Navigate to the project directory and run docker-compose
-                sh 'cd $PROJECT_DIR && docker-compose up -d'
+                sh 'cd $PROJECT_DIR && docker build -d'
             }
         }
     }
