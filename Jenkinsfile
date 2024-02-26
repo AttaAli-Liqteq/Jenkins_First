@@ -17,15 +17,16 @@ environment {
 
         stage('Clone Repository') {
             steps {
-                // Change to the project directory and clone the repo
-                // Replace 'yourusername/yourrepository.git' with your actual repository path
                 script {
-                    dir('$PROJECT_DIR') {
-                        sh 'git clone https://github.com/yourusername/yourrepository.git . || git pull'
+                    dir("${WORKSPACE}/Node_Basic") {
+                        // Using the checkout step for a more Jenkins-native approach
+                        checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']],
+                            userRemoteConfigs: [[url: 'https://github.com/yourusername/yourrepository.git']]]
                     }
                 }
             }
         }
+
 
         stage('Build and Run Docker Containers') {
             steps {
