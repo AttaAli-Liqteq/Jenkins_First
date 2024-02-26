@@ -1,10 +1,11 @@
 pipeline {
     agent any 
+    
+environment {
+    // Define the project directory within the Jenkins workspace
+    PROJECT_DIR = "${WORKSPACE}/Node_Basic"
+}
 
-    environment {
-        // Define environment variables if needed
-        PROJECT_DIR = '/home/attaali/Desktop/Node_Basic'
-    }
 
     stages {
         stage('Prepare Environment') {
