@@ -1,0 +1,9 @@
+FROM postgres:latest
+
+ENV POSTGRES_DB=yourdbname
+ENV POSTGRES_USER=youruser
+ENV POSTGRES_PASSWORD=yourpassword
+
+EXPOSE 5432
+
+CMD ["postgres"]

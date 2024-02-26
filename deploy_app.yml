@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Clone the repository
+      git:
+        repo: 'https://github.com/AttaAli-Liqteq/Jenkins_First'
+        dest: "/home/attaali/Desktop/Node_Basic"
+        version: "main" # or whichever branch you want to deploy
+
+    - name: Build and run Docker containers
+      command: docker-compose up -d
+      args:
+        chdir: "/home/attaali/Desktop/Node_Basic"

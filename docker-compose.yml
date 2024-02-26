@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  
+
+  nodeapp:
+    build:
+      context: /home/attaali/Desktop/Node_Basic
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      
+  postgres:
+    build:
+      context: /home/attaali/Desktop/Node_Basic
+      dockerfile: Dockerfile1
+    environment:
+      POSTGRES_DB: yourdbname
+      POSTGRES_USER: youruser
+      POSTGRES_PASSWORD: yourpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
