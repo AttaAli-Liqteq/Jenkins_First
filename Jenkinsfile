@@ -1,30 +1,12 @@
 pipeline {
     agent any 
-
+    
     environment {
         // Define the project directory within the Jenkins workspace
         PROJECT_DIR = "${WORKSPACE}/Node_Basic"
     }
 
     stages {
-        stage('Install Docker') {
-            steps {
-                // Update package lists and install Docker
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common'
-                sh 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
-                sh 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get install -y docker-ce docker-ce-cli containerd.io'
-                
-                // Add Jenkins user to the Docker group (replace 'jenkins' with your Jenkins user if different)
-                sh 'sudo usermod -aG docker jenkins'
-                
-                // Restart Jenkins to apply group changes (may not be needed or may need to be handled outside of pipeline)
-                // sh 'sudo systemctl restart jenkins'
-            }
-        }
-
         stage('Prepare Environment') {
             steps {
                 // Create the project directory if it doesn't exist
@@ -34,7 +16,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                script {
+                script {thi
                     dir("${WORKSPACE}/Node_Basic") {
                         // Using the checkout step for a more Jenkins-native approach
                         checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']],
