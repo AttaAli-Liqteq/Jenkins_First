@@ -30,9 +30,11 @@ pipeline {
         }
         success {
             // Additional actions for successful build
+            echo 'ohohoho'
         }
         failure {
             // Additional actions for failed build
+            echo 'hahaha..'
         }
     }
 }
