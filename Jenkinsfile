@@ -31,6 +31,10 @@ pipeline {
         success {
             // Additional actions for successful build
             echo 'ohohoho'
+            // Load and execute Jenkinsfile1
+            script {
+                load 'Jenkinsfile1'
+            }
         }
         failure {
             // Additional actions for failed build
