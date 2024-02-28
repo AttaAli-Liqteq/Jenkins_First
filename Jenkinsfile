@@ -16,7 +16,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                script {thi
+                script {
                     dir("${WORKSPACE}/Node_Basic") {
                         // Using the checkout step for a more Jenkins-native approach
                         checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']],
@@ -25,6 +25,7 @@ pipeline {
                 }
             }
         }
+
 
         stage('Build and Run Docker Containers') {
             steps {
