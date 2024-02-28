@@ -1,40 +1,25 @@
-pipeline {
-    agent any
+// Jenkinsfile1 contents
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                // Your build commands go here
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                // Your testing commands go here
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying..'
-                // Your deployment commands go here
-            }
-        }
+// Define the agent where the steps will run
+node {
+    // Begin the Build stage
+    stage('Build') {
+        echo 'Building..'
+        // Insert your build commands here
     }
-    post {
-        always {
-            // Send an email regardless of the build result
-            mail to: 'commanderata@gmail.com',
-                 subject: "Build ${currentBuild.fullDisplayName}",
-                 body: "Second email lmao"
-        }
-        success {
-            // Additional actions for successful build
-          echo 'yeaaaaaaa..'
-        }
-        failure {
-            // Additional actions for failed build
-          echo 'yoooooo..'
-        }
+
+    // Begin the Test stage
+    stage('Test') {
+        echo 'Testing..'
+        mail to: 'commanderata@gmail.com',
+             subject: "Build ${currentBuild.fullDisplayName}",
+             body: "Second email lmao"
+        // Insert your testing commands here
+    }
+
+    // Begin the Deploy stage
+    stage('Deploy') {
+        echo 'Deploying..'
+        // Insert your deployment commands here
     }
 }
